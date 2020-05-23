@@ -46,6 +46,7 @@ link_file $RCDIR/terminator $HOME/.config/terminator/config
 
 # vscode config files
 echo "> Link VS Code config files"
+mkdir -p $HOME/.config/Code/User
 link_file $RCDIR/vscode/keybindings.json $HOME/.config/Code/User/keybindings.json
 link_file $RCDIR/vscode/settings.json $HOME/.config/Code/User/settings.json
 
