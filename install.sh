@@ -22,12 +22,11 @@ function link_file() {
     fi
 }
 
-# link ~/.bashrc
+
 echo "> Link ~/.bashrc"
 link_file $RCDIR/bashrc $HOME/.bashrc
 
 
-# link ~/.bash_profile
 echo "> Link ~/.bash_profile"
 if [[ -e $HOME/.profile ]]; then
     echo "    Found .profile. Will not use this file"
@@ -36,3 +35,16 @@ if [[ -e $HOME/.profile ]]; then
 fi
 
 link_file $RCDIR/bash_profile $HOME/.bash_profile
+
+
+echo "> Link ~/.config/terminator/config"
+mkdir -p $HOME/.config/terminator
+link_file $RCDIR/terminator $HOME/.config/terminator/config
+
+
+
+# vscode config files
+echo "> Link VS Code config files"
+link_file $RCDIR/vscode/keybindings.json $HOME/.config/Code/User/keybindings.json
+link_file $RCDIR/vscode/settings.json $HOME/.config/Code/User/settings.json
+
