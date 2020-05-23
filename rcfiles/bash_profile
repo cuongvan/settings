@@ -1,0 +1,8 @@
+#! /bin/bash
+
+export JAVA_HOME=/app/jdk1.8.0_251
+
+export PATH="$HOME/bin:$HOME/.local/bin:$PATH:$JAVA_HOME/bin"
+export EDITOR='/usr/bin/code --wait'
+
+. "$HOME/.bashrc"
