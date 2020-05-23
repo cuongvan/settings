@@ -1,0 +1,7 @@
+ibus-unikey
+terminator
+htop
+python3-pip
+vim
+tree
+xclip

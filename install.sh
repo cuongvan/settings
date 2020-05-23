@@ -37,6 +37,7 @@ fi
 link_file $RCDIR/bash_profile $HOME/.bash_profile
 
 
+# terminator config files
 echo "> Link ~/.config/terminator/config"
 mkdir -p $HOME/.config/terminator
 link_file $RCDIR/terminator $HOME/.config/terminator/config

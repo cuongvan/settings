@@ -1,8 +1,12 @@
 #! /bin/bash
 
+# enable color support of ls and also add handy aliases
+eval "$(dircolors -b)"
+alias ls='ls --color=auto'
+alias ll='/bin/ls --color=auto -lh'
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
 
-alias ll='ls -lh'
-alias py=python3.9
 alias copy='head -c -1 | xclip -selection clipboard'
 alias ports='sudo netstat -tunpl'
 alias rc="code $HOME/.bashrc"
@@ -120,12 +124,7 @@ shopt -s checkwinsize
 # lesspipe
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# enable color support of ls and also add handy aliases
-eval "$(dircolors -b)"
-alias ls='ls --color=auto'
-alias ll='/bin/ls --color=auto -alF'
-alias grep='grep --color=auto'
-alias egrep='egrep --color=auto'
+
 
 
 #save history after every command
