@@ -13,5 +13,9 @@
     {
         "key": "ctrl+shift+d",
         "command": "editor.action.duplicateSelection"
+    },
+    {
+        "key": "ctrl+alt+c",
+        "command": "copyFilePath"
     }
 ]
