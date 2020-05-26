@@ -1,5 +1,6 @@
 #! /bin/bash
 
+## for any machine
 alias reload='. ~/.bashrc'
 alias ls='ls --color=auto'
 alias ll='ls --color=auto -lh'
@@ -8,25 +9,30 @@ alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias ..='cd ..'
 alias -- -='cd -'
-alias copy='head -c -1 | xclip -selection clipboard' # copy to clipboard
-alias r='history -r'                # reload history
 alias ports='sudo netstat -tunpl'   # show listening ports
-alias erc='code ~/.bashrc'         # edit .bashrc
-alias ea='code ~/bash/aliases'      # edit aliases
-alias tail='tail -f'
 alias fn='find -name'               # find by name
 function ftn {                      # find by type and name
     find -type $1 -name "$2"
 }
 alias du='du -h'
+alias tail='tail -f'
+
+
+### for personal machines
+alias copy='head -c -1 | xclip -selection clipboard' # copy to clipboard
+alias r='history -r'                # reload history
+alias erc='code ~/.bashrc'          # edit .bashrc
+alias ea='code ~/bash/aliases'      # edit aliases
 
 
 ### git
 alias g=git
 alias gs='git status'
+alias gls='git ls-files'
 alias ga='git add -A'
 alias gc='git commit -m'
 alias gac='git commit -am'
+alias grs='git reset'
 alias gaac='git add -A && git commit -m'
 alias gp='git push'
 alias 'gc!'='git commit -v --amend'
