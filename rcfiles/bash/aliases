@@ -18,6 +18,7 @@ alias fn='find -name'               # find by name
 function ftn {                      # find by type and name
     find -type $1 -name "$2"
 }
+alias du='du -h'
 
 
 ### git
