@@ -4,8 +4,10 @@ function link_file() {
     git_file=$1     # absolute path
     dest_file=$2    # absolute path
 
-    if [[ -e $dest_file && -L $dest_file ]]; then # healthy symlink
-        echo "    $dest_file is linked already"
+    if [[ -e $dest_file && -L $dest_file ]] # healthy symlink
+    then
+        # echo "    $dest_file is linked already"
+        :
     elif [[ -e $dest_file && ! -L $dest_file ]]; then # normal file, not a symlink
         echo "    $dest_file is not a symlink"
         echo "        > Move ==> ${dest_file}.bak"
@@ -22,6 +24,11 @@ function link_file() {
     fi
 }
 
+if [[ ! -d ~/.bash ]]
+then
+    echo "> Create .bash directory"
+    mkdir ~/.bash
+fi
 
 echo "> Link ~/.bashrc"
 link_file $RCDIR/bashrc $HOME/.bashrc

@@ -10,7 +10,9 @@ alias egrep='egrep --color=auto'
 alias copy='head -c -1 | xclip -selection clipboard'
 alias ports='sudo netstat -tunpl'
 alias rc="code $HOME/.bashrc"
-
+alias ..='cd ..'
+alias -- -='cd -'
+. /usr/share/autojump/autojump.sh
 
 function path {
     if [[ $# == 0 ]]; then
@@ -97,6 +99,8 @@ PATH=$(tr -d $'\n ' <<< "
 ")
 
 alias g=git
+alias gs='git status'
+alias gaa='git add -A'
 alias gac='git commit -am'
 alias gc='git commit -m'
 alias 'gc!'='git commit -v --amend'
