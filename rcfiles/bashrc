@@ -1,9 +1,9 @@
 #! /bin/bash
 
-. ~/.bash/bashinit
-. ~/.bash/exports
-. ~/.bash/prompt
-. ~/.bash/aliases
+. ~/bash/bashinit
+. ~/bash/exports
+. ~/bash/prompt
+. ~/bash/aliases
 . /usr/share/autojump/autojump.sh
 
-[[ -f ~/.localrc ]] && . ~/.localrc
+[[ -f ~/localrc ]] && . ~/localrc

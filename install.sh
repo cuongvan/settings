@@ -24,18 +24,40 @@ function link_file() {
     fi
 }
 
-if [[ ! -d ~/.bash ]]
+
+echo "> Link ~/bash directory"
+if [[ -L ~/bash ]]
 then
-    echo "> Create .bash directory"
-    mkdir ~/.bash
+    if [[ -f ~/bash ]]
+    then
+        echo "    ~/bash is a file. Backup to bash.bak"
+        mv ~/bash ~/bash.bak
+        ln -s $RCDIR/bash ~/bash
+    elif [[ -d ~/bash ]]
+    then
+        :
+    elif [[ ! -e ~/bash ]]
+    then
+        echo "    ~/bash is a broken symlink. Update now"
+        rm ~/bash
+        ln -s $RCDIR/bash ~/bash
+    else
+        echo "unknow case"
+    fi
+else
+    echo "    ~/bash is not a symlink. Backup to bash.bak"
+    mv ~/bash ~/bash.bak
+    ln -s $RCDIR/bash ~/bash
 fi
+
 
 echo "> Link ~/.bashrc"
 link_file $RCDIR/bashrc $HOME/.bashrc
 
 
 echo "> Link ~/.bash_profile"
-if [[ -e $HOME/.profile ]]; then
+if [[ -e $HOME/.profile ]]
+then
     echo "    Found .profile. Will not use this file"
     echo "        > move ==> $HOME/.profile.bak"
     mv $HOME/.profile $HOME/.profile.bak
