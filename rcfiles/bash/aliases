@@ -2,36 +2,28 @@
 
 alias ls='ls --color=auto'
 alias ll='/bin/ls --color=auto -lh'
-
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
-
-# copy to clipboard
-alias copy='head -c -1 | xclip -selection clipboard'
-
-# show listening ports
-alias ports='sudo netstat -tunpl'
-
-# edit .bashrc
-alias rc="code $HOME/.bashrc"
-
 alias ..='cd ..'
 alias -- -='cd -'
-
-# reload history
-alias r='history -r'
+alias copy='head -c -1 | xclip -selection clipboard' # copy to clipboard
+alias r='history -r'                # reload history
+alias ports='sudo netstat -tunpl'   # show listening ports
+alias rc='code $HOME/.bashrc'       # edit .bashrc
+alias ea='code ~/bash/aliases'      # edit aliases
 
 
 ### git
 alias g=git
 alias gs='git status'
 alias gaa='git add -A'
-alias gac='git commit -am'
 alias gc='git commit -m'
+alias gac='git commit -am'
+alias gaac='git add -A && git commit -m'
+alias gp='git push'
 alias 'gc!'='git commit -v --amend'
 alias gl='git log --pretty='\''format:%Cgreen%h%Creset %an - %s'\'' --graph'
-alias glg='git log --graph --pretty=format:"%Cred%h%Creset %C(yellow)%an%d%Creset %s %Cgreen(%cr)%Creset" --date=relative'
-alias gp='git push'
+alias gl1='git log --graph --pretty=format:"%Cred%h%Creset %C(yellow)%an%d%Creset %s %Cgreen(%cr)%Creset" --date=relative'
 
 
 #################### FUNCTIONS ##############################
@@ -110,7 +102,8 @@ function ccd {
 function nbcd {
     file_path=$1
     cd `dirname $file_path`
-    while [ ! -f build.xml ]; do
+    while [ ! -f build.xml ]
+    do
         cd ..
     done
 }
