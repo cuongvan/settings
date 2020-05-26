@@ -13,7 +13,7 @@ alias rc="code $HOME/.bashrc"
 
 
 function path {
-    if [[ $# -eq 0 ]]; then
+    if [[ $# == 0 ]]; then
         p=$(pwd)
     else
         p=$(realpath $1)
@@ -56,16 +56,6 @@ function e {
 
 # ===== END of env.sh files
 
-function ps1 {
-    # ps + grep
-    if [[ $# -eq 0 ]]; then
-        echo "Missing search regex"
-        return 1
-    fi
-    
-    ps -eo pid,user,cmd | grep -v grep | grep $@
-}
-
 # print pids of filtered processes
 # often used after ps1
 # ps1: print all processed
@@ -73,14 +63,6 @@ function ps1 {
 # ps1 <filter> 1: show pids
 # ps1 <filter> 2: kill filtered processs
 function ps1 {
-    local filter="${1:-''}"
-    (( $# >= 1 )) && filter=$1
-
-    (($# == 1)); just_filter=$?
-
-    [[ $# -ge 2 && "$1" == 1 ]]; show_pids=$?
-    [[ $# -ge 2 && "$1" == 2 ]]; kill_procs=$?
-
     if [[ $# == 0 ]]; then
         ps -ef
     elif [[ $# == 1 ]]; then
@@ -94,21 +76,6 @@ function ps1 {
         else
             echo "Unrecognized subcmd: $2"
         fi
-    fi
-}
-
-
-function pscmd {
-    if [[ $# -eq 0 ]]; then
-        echo "Missing argument: command"
-        return 1
-    fi
-
-    filter=$1
-
-    pids=$(ps -ef | grep -v grep | grep "$filter" | awk '{print $2}')
-    if [ ! -z "$pids" ]; then
-        kill $pids
     fi
 }
 
