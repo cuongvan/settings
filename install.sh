@@ -6,7 +6,6 @@ function link_file() {
 
     if [[ -e $dest_file && -L $dest_file ]] # healthy symlink
     then
-        # echo "    $dest_file is linked already"
         :
     elif [[ -e $dest_file && ! -L $dest_file ]]; then # normal file, not a symlink
         echo "    $dest_file is not a symlink"
@@ -44,9 +43,13 @@ then
     else
         echo "unknow case"
     fi
-else
+elif [[ -e ~/bash ]]
+then
     echo "    ~/bash is not a symlink. Backup to bash.bak"
     mv ~/bash ~/bash.bak
+    ln -s $RCDIR/bash ~/bash
+else
+    echo "    ~/bash not exists. Link now"
     ln -s $RCDIR/bash ~/bash
 fi
 
