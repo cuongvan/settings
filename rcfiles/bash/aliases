@@ -9,8 +9,13 @@ alias -- -='cd -'
 alias copy='head -c -1 | xclip -selection clipboard' # copy to clipboard
 alias r='history -r'                # reload history
 alias ports='sudo netstat -tunpl'   # show listening ports
-alias rc='code $HOME/.bashrc'       # edit .bashrc
+alias ebrc='code ~/.bashrc'         # edit .bashrc
 alias ea='code ~/bash/aliases'      # edit aliases
+alias tail='tail -f'
+alias fn='find -name'               # find by name
+function ftn {                      # find by type and name
+    find -type $1 -name "$2"
+}
 
 
 ### git
