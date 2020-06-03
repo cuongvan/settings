@@ -15,7 +15,7 @@ function ftn {                      # find by type and name
     find -type $1 -name "$2"
 }
 alias du='du -h'
-alias tail='tail -f'
+# alias tail='tail -f'
 
 
 ### for personal machines

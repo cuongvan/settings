@@ -6,3 +6,5 @@ vim
 tree
 xclip
 autojump
+httpie
+jq

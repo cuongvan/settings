@@ -15,7 +15,7 @@
         "command": "editor.action.duplicateSelection"
     },
     {
-        "key": "ctrl+alt+c",
+        "key": "alt+shift+l",
         "command": "copyFilePath"
     },
     {
@@ -25,13 +25,5 @@
     {
         "key": "alt+right",
         "command": "workbench.action.navigateForward"
-    },
-    {
-        "key": "ctrl+shift+-",
-        "command": "-workbench.action.navigateForward"
-    },
-    {
-        "key": "ctrl+alt+-",
-        "command": "-workbench.action.navigateBack"
     }
 ]
