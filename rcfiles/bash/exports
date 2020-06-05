@@ -1,3 +1,4 @@
 #! /bin/bash
 
-PATH=$HOME/scripts:$PATH
+export JAVA_HOME=/app/jdk1.8.0_251
+export PATH=$HOME/scripts:$JAVA_HOME/bin:$PATH
