@@ -14,9 +14,6 @@ alias fn='find -name'               # find by name
 function ftn {                      # find by type and name
     find -type $1 -name "$2"
 }
-alias du='du -h'
-# alias tail='tail -f'
-
 
 ### for personal machines
 alias copy='head -c -1 | xclip -selection clipboard' # copy to clipboard
