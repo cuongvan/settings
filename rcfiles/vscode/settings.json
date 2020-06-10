@@ -2,5 +2,8 @@
     "workbench.startupEditor": "newUntitledFile",
     "python.pythonPath": "/home/cuongvt4/.local/bin/python",
     "workbench.colorTheme": "Visual Studio Dark",
-    "workbench.editor.scrollToSwitchTabs": true
+    "workbench.editor.scrollToSwitchTabs": true,
+    "files.associations": {
+        "*rc": "shellscript"
+    }
 }
