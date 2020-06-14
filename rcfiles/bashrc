@@ -8,3 +8,5 @@
 [[ -f /usr/share/autojump/autojump.sh ]] && . /usr/share/autojump/autojump.sh
 
 [[ -f ~/localrc ]] && . ~/localrc
+
+. ~/bash/final
