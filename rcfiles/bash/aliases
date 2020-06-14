@@ -100,3 +100,7 @@ function nbcd {
         cd ..
     done
 }
+
+function exe {
+    chmod u+x $@
+}
