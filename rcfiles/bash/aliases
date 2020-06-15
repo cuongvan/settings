@@ -20,7 +20,9 @@ alias copy='head -c -1 | xclip -selection clipboard' # copy to clipboard
 alias r='history -r'                # reload history
 alias erc='code ~/.bashrc'          # edit .bashrc
 alias ea='code ~/bash/aliases'      # edit aliases
-
+alias open=xdg-open
+alias py=python3.6
+alias ipy=ipython
 
 ### git
 alias g=git
@@ -76,8 +78,12 @@ function ps1 {
     fi
 }
 
-function ccd {
-	cd $(dirname $1)
+function cd {
+    if [[ $# -ge 1 && -f $1 ]]; then
+        builtin cd $(dirname "$1")
+    else
+        builtin cd "$@"
+    fi
 }
 
 

@@ -1,6 +1,6 @@
 {
     "workbench.startupEditor": "newUntitledFile",
-    "python.pythonPath": "/home/cuongvt4/.local/bin/python",
+    "python.pythonPath": "/usr/bin/python3.6",
     "workbench.colorTheme": "Visual Studio Dark",
     "workbench.editor.scrollToSwitchTabs": true,
     "files.associations": {
