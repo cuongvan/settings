@@ -1,9 +1,9 @@
 {
     "workbench.startupEditor": "newUntitledFile",
-    "python.pythonPath": "/usr/bin/python3.6",
     "workbench.colorTheme": "Visual Studio Dark",
     "workbench.editor.scrollToSwitchTabs": true,
     "files.associations": {
         "*rc": "shellscript"
-    }
+    },
+    "python.pythonPath": "/usr/bin/python3.6"
 }

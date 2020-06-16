@@ -7,7 +7,10 @@ alias ll='ls --color=auto -lh'
 alias lh='ls -d .!(|.)'
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
+alias x=xargs
 alias ..='cd ..'
+alias ...='cd .. && cd ..'
+alias ...='cd .. && cd ..'
 alias -- -='cd -'
 alias ports='sudo netstat -tunpl'   # show listening ports
 alias fn='find -name'               # find by name
