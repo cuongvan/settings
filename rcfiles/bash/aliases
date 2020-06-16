@@ -19,6 +19,7 @@ function ftn {                      # find by type and name
 alias copy='head -c -1 | xclip -selection clipboard' # copy to clipboard
 alias r='history -r'                # reload history
 alias erc='code ~/.bashrc'          # edit .bashrc
+alias b='cd ~/bash'
 alias ea='code ~/bash/aliases'      # edit aliases
 alias open=xdg-open
 alias py=python3.6
