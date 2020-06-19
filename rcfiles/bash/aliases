@@ -26,6 +26,7 @@ alias b='cd ~/bash'
 alias ea='code ~/bash/aliases'      # edit aliases
 alias open=xdg-open
 alias py=python3.6
+alias py2=python2
 alias ipy=ipython
 
 ### git
@@ -47,6 +48,7 @@ alias gl1='git log --graph --pretty=format:"%Cred%h%Creset %C(yellow)%an%d%Crese
 alias run='docker run -it --rm'
 
 #################### FUNCTIONS ##############################
+
 function path {
     # tee /dev/tty: only works from a terminal
     if [[ $# == 0 ]]
@@ -55,9 +57,26 @@ function path {
         pwd | tee /dev/tty | head -c -1 | xclip -selection clipboard
     else
         # a sub path
+        # realpath $1 | tee /dev/tty | head -c -1 | xclip -selection clipboard
         realpath $1 | tee /dev/tty | head -c -1 | xclip -selection clipboard
     fi
 }
+
+function path {
+    # tee /dev/tty: only works from a terminal
+    if [[ $# == 0 ]]
+    then
+        # current directory
+        printf %s $(pwd)
+        pwd | tee /dev/tty | head -c -1 | xclip -selection clipboard
+    else
+        # a sub path
+        # realpath $1 | tee /dev/tty | head -c -1 | xclip -selection clipboard
+        printf %s/%s $(pwd) $1 | tee /dev/tty | head -c -1 | xclip -selection clipboard
+    fi
+}
+
+
 
 
 # make ps more useful
@@ -112,5 +131,5 @@ function nbcd {
 }
 
 function exe {
-    chmod u+x $@
+    chmod u+x "$@"
 }
