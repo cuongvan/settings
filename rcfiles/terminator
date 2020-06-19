@@ -1,8 +1,23 @@
 [global_config]
+  borderless = True
+  handle_size = 1
   scroll_tabbar = True
   suppress_multiple_term_dialog = True
   title_hide_sizetext = True
+  window_state = maximise
 [keybindings]
+  close_term = <Primary>w
+  close_window = <Primary>q
+  copy = <Primary>x
+  cycle_next = None
+  cycle_prev = None
+  new_tab = <Primary>t
+  paste = <Primary>v
+  search = <Primary>f
+  split_horiz = <Primary>s
+  split_vert = <Primary>a
+  toggle_zoom = <Primary>z
+  zoom_in = <Primary>equal
 [layouts]
   [[default]]
     [[[child1]]]
@@ -12,6 +27,48 @@
     [[[window0]]]
       parent = ""
       type = Window
+  [[2x2]]
+    [[[child0]]]
+      fullscreen = False
+      last_active_term = c08fbb5f-c26b-4a96-a7e2-3509c2b9178b
+      last_active_window = True
+      maximised = True
+      order = 0
+      parent = ""
+      position = 65:24
+      size = 1855, 1056
+      title = /bin/bash
+      type = Window
+    [[[child1]]]
+      order = 0
+      parent = child0
+      position = 927
+      ratio = 0.5
+      type = HPaned
+    [[[child3]]]
+      order = 1
+      parent = child1
+      position = 527
+      ratio = 0.499526515152
+      type = VPaned
+    [[[terminal2]]]
+      order = 0
+      parent = child1
+      profile = default
+      type = Terminal
+      uuid = c08fbb5f-c26b-4a96-a7e2-3509c2b9178b
+    [[[terminal4]]]
+      order = 0
+      parent = child3
+      profile = default
+      type = Terminal
+      uuid = 6b450379-491c-4692-95a3-be4c7ddaa8cf
+    [[[terminal5]]]
+      order = 1
+      parent = child3
+      profile = default
+      type = Terminal
+      uuid = ff33ddae-b946-47b2-ba8d-17ae4a1f0377
 [plugins]
 [profiles]
   [[default]]
@@ -20,3 +77,4 @@
     foreground_color = "#ffffff"
     icon_bell = False
     scrollback_infinite = True
+    show_titlebar = False

@@ -29,6 +29,10 @@ alias py=python3.6
 alias py2=python2
 alias ipy=ipython
 
+# terminator
+alias splith='xdotool key ctrl+shift+o'
+alias splitv='xdotool key ctrl+shift+e'
+
 ### git
 alias g=git
 alias gs='git status'
@@ -121,6 +125,13 @@ function where {
 }
 
 # ===== for personal computers only
+function gitcd {
+    cd $(dirname $1)
+    until [ -d .git ]
+    do
+        cd ..
+    done
+}
 function nbcd {
     file_path=$1
     cd `dirname $file_path`
