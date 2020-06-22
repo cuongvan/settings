@@ -7,7 +7,7 @@
   window_state = maximise
 [keybindings]
   close_term = <Primary>w
-  close_window = <Primary>q
+  close_window = <Primary><Shift>q
   copy = <Primary>x
   cycle_next = None
   cycle_prev = None
