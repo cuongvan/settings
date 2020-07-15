@@ -43,7 +43,7 @@ alias gac='git commit -am'
 alias grs='git reset'
 alias gac='git add -A && git commit -m'
 alias gp='git push'
-alias 'gc!'='git commit -v --amend'
+alias 'gc!'='git commit -v --amend -m'
 alias gl='git log --pretty='\''format:%Cgreen%h%Creset %an - %s'\'' --graph'
 alias gl1='git log --graph --pretty=format:"%Cred%h%Creset %C(yellow)%an%d%Creset %s %Cgreen(%cr)%Creset" --date=relative'
 function gcd {
@@ -57,6 +57,7 @@ function gcd {
 }
 
 ### Docker
+alias d=docker
 alias di='docker images'
 alias drmi='docker rmi'
 alias drun='docker run -it --rm'
@@ -64,7 +65,11 @@ alias dps='docker ps'
 alias dpsq='docker ps -q'
 alias dpsa='docker ps -a'
 alias dpsaq='docker ps -aq'
-alias drm='docker rm'
+# alias drmf='docker rm -f'
+alias drm='docker rm $(docker ps -q)'
+alias drmall='docker rm $(docker ps -aq)'
+alias dbuild='docker build . -t'
+# alias drm='docker rm'
 
 #################### FUNCTIONS ##############################
 
@@ -79,7 +84,10 @@ function path {
     echo "$p" | head -c -1 | xclip -selection clipboard 2>/dev/null
 }
 
-
+function f {
+    # f = field
+    awk "{print \$$1}"
+}
 
 
 # make ps more useful
