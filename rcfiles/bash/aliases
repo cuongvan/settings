@@ -34,8 +34,8 @@ alias py2=python2
 alias ipy=ipython
 
 # terminator
-alias splith='xdotool key ctrl+shift+o'
-alias splitv='xdotool key ctrl+shift+e'
+# alias splith='xdotool key ctrl+a'
+# alias splitv='xdotool key ctrl+shift+e'
 
 ### git
 alias g=git
@@ -47,10 +47,20 @@ alias grs='git reset'
 alias gac='git commit -am'
 alias grs='git reset'
 alias gac='git add -A && git commit -m'
+<<<<<<< HEAD
 alias gpush='git push'
-alias 'gc!'='git commit -v --amend'
+alias 'gc!'='git commit -v --amend -m'
 alias gl='git log --pretty='\''format:%Cgreen%h%Creset %an - %s'\'' --graph'
 alias gl1='git log --graph --pretty=format:"%Cred%h%Creset %C(yellow)%an%d%Creset %s %Cgreen(%cr)%Creset" --date=relative'
+function gcd {
+    if [[ $# > 0 ]]; then
+        cd $(dirname $1)
+    fi
+
+    until [[ -d .git || `pwd` == '/' ]]; do
+        cd ..
+    done
+}
 
 ### Docker
 alias run='docker run -it --rm'
@@ -58,23 +68,40 @@ alias di='docker images'
 alias drmi='docker rmi'
 alias dps='docker ps'
 alias dpsa='docker ps -a'
+    
 
+### Docker
+alias d=docker
+alias di='docker images'
+alias drmi='docker rmi'
+alias drun='docker run -it --rm'
+alias dps='docker ps'
+alias dpsq='docker ps -q'
+alias dpsa='docker ps -a'
+alias dpsaq='docker ps -aq'
+# alias drmf='docker rm -f'
+alias drm='docker rm $(docker ps -q)'
+alias drmall='docker rm $(docker ps -aq)'
+alias dbuild='docker build . -t'
+# alias drm='docker rm'
+>>>>>>> 78870fc3c7a18de34062e0be88e13e6f535edf1c
 
-#################### FUNCTIONS ##############################
 
 function path {
-    # tee /dev/tty: only works from a terminal
     if [[ $# == 0 ]]
     then
-        # current directory
-        printf %s $(pwd) | tee /dev/tty | xclip -selection clipboard
+        p=$(pwd)
     else
-        # a sub path
-        printf %s/%s $(pwd) $1 | tee /dev/tty | xclip -selection clipboard
+        p=$(python -c "from sys import *; from os.path import *; print abspath(argv[1])" "$1")
     fi
+    echo "$p"
+    echo "$p" | head -c -1 | xclip -selection clipboard 2>/dev/null
 }
 
-
+function f {
+    # f = field
+    awk "{print \$$1}"
+}
 
 
 # make ps more useful
@@ -119,17 +146,10 @@ function where {
 }
 
 # ===== for personal computers only
-function gitcd {
-    cd $(dirname $1)
-    until [ -d .git ]
-    do
-        cd ..
-    done
-}
 function nbcd {
     file_path=$1
     cd `dirname $file_path`
-    while [ ! -f build.xml ]
+    while [[ ! -f build.xml || `pwd` == '/' ]]
     do
         cd ..
     done
