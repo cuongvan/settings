@@ -6,6 +6,9 @@ alias ls='ls --color=auto'
 alias ll='ls --color=auto -lh'
 alias lh='ls -d .!(|.)'
 alias grep='grep --color=auto'
+function grepr {
+    grep "$@" --color=auto -R
+}
 alias egrep='egrep --color=auto'
 alias x=xargs
 alias ..='cd ..'
