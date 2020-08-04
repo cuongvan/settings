@@ -6,31 +6,34 @@ alias ls='ls --color=auto'
 alias ll='ls --color=auto -lh'
 alias lh='ls -d .!(|.)'
 alias grep='grep --color=auto'
-function grepr {
-    grep "$@" --color=auto -R
-}
+alias gr='grep --color=auto'
+function grepr { grep "$@" --color=auto -R; }
 alias egrep='egrep --color=auto'
-alias x=xargs
+alias x='xargs '
 alias ..='cd ..'
 alias ...='cd .. && cd ..'
-alias ...='cd .. && cd ..'
+alias ....='cd .. && cd .. && cd ..'
 alias -- -='cd -'
 alias ports='sudo netstat -tunpl'   # show listening ports
 alias fn='find . -name'             # find by name
 alias fni='find . -iname'           # find by name case insensitive
 
 alias ff='find . -type f -name'     # find file by name
+alias ff1='find . -maxdepth 1 -type f -name'
+alias ff2='find . -maxdepth 2 -type f -name'
+alias ff3='find . -maxdepth 3 -type f -name'
 alias ffi='find . -type f -iname'   # find file by name case insensitive
 
 alias fd='find . -type d -name'     # find directory by name
+alias fd1='find . -maxdepth 1 -type d -name'
+alias fd2='find . -maxdepth 2 -type d -name'
+alias fd3='find . -maxdepth 3 -type d -name'
 alias fdi='find . -type d -iname'   # find directory by name case insensitve
 
 ### for personal machines
 alias copy='head -c -1 | xclip -selection clipboard' # copy to clipboard
 alias r='history -r'                # reload history
-alias erc='code ~/.bashrc'          # edit .bashrc
-alias b='cd ~/bash'
-alias ea='code ~/bash/aliases'      # edit aliases
+alias a='code ~/bash/aliases'       # edit aliases
 alias open=xdg-open
 alias py=python3.6
 alias py2=python2
@@ -46,12 +49,7 @@ alias gs='git status'
 alias gls='git ls-files'
 alias ga='git add -A'
 alias gc='git commit -m'
-alias grs='git reset'
 alias gac='git commit -am'
-alias grs='git reset'
-alias gac='git add -A && git commit -m'
-alias gpush='git push'
-alias 'gc!'='git commit -v --amend -m'
 alias gl='git log --pretty='\''format:%Cgreen%h%Creset %an - %s'\'' --graph'
 alias gl1='git log --graph --pretty=format:"%Cred%h%Creset %C(yellow)%an%d%Creset %s %Cgreen(%cr)%Creset" --date=relative'
 function gcd {
@@ -67,17 +65,11 @@ function gcd {
 ### Docker
 alias d=docker
 alias di='docker images'
-alias drmi='docker rmi'
-alias drun='docker run -it --rm'
-alias dps='docker ps'
-alias dpsq='docker ps -q'
-alias dpsa='docker ps -a'
+alias dr='docker run -it --rm'
 alias dpsaq='docker ps -aq'
-# alias drmf='docker rm -f'
-alias drm='docker rm $(docker ps -q)'
 alias drmall='docker rm $(docker ps -aq)'
 alias dbuild='docker build . -t'
-# alias drm='docker rm'
+alias dc='docker ps -q' # the only container's id
 
 
 function path {

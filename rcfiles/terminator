@@ -77,4 +77,4 @@
     foreground_color = "#ffffff"
     icon_bell = False
     scrollback_infinite = True
-    show_titlebar = False
+    word_chars = "-A-Za-z0-9,./?%&#_"
