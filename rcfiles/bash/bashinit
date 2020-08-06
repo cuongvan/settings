@@ -42,5 +42,3 @@ eval "$(dircolors -b)"
 #save history after every command
 #use 'history -r' to reload history
 PROMPT_COMMAND="history -a ; $PROMPT_COMMAND"
-
-

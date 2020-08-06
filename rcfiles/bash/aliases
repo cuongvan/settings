@@ -1,20 +1,29 @@
 #! /bin/bash
 
 ## for any machine
-alias reload='. ~/.bashrc'
 alias ls='ls --color=auto'
-alias ll='ls --color=auto -lh'
-alias lh='ls -d .!(|.)'
+alias ll='ls -lh'
+
 alias grep='grep --color=auto'
 alias gr='grep --color=auto'
 function grepr { grep "$@" --color=auto -R; }
-alias egrep='egrep --color=auto'
-alias x='xargs '
+
+alias x='xargs ' # trailing space!
+
 alias ..='cd ..'
 alias ...='cd .. && cd ..'
 alias ....='cd .. && cd .. && cd ..'
 alias -- -='cd -'
 alias ports='sudo netstat -tunpl'   # show listening ports
+
+alias mem='vmstat --unit m --timestamp 1' # or free --wide --human--count 9999 --seconds 1
+alias exe='chmod u+x'
+
+### ps
+alias psef='ps -ef'
+alias psa='ps aux'
+
+### find
 alias fn='find . -name'             # find by name
 alias fni='find . -iname'           # find by name case insensitive
 
@@ -30,9 +39,9 @@ alias fd2='find . -maxdepth 2 -type d -name'
 alias fd3='find . -maxdepth 3 -type d -name'
 alias fdi='find . -type d -iname'   # find directory by name case insensitve
 
+
 ### for personal machines
 alias copy='head -c -1 | xclip -selection clipboard' # copy to clipboard
-alias r='history -r'                # reload history
 alias a='code ~/bash/aliases'       # edit aliases
 alias open=xdg-open
 alias py=python3.6
@@ -44,7 +53,6 @@ alias ipy=ipython
 # alias splitv='xdotool key ctrl+shift+e'
 
 ### git
-alias g=git
 alias gs='git status'
 alias gls='git ls-files'
 alias ga='git add -A'
@@ -53,6 +61,7 @@ alias gac='git commit -am'
 alias gl='git log --pretty='\''format:%Cgreen%h%Creset %an - %s'\'' --graph'
 alias gl1='git log --graph --pretty=format:"%Cred%h%Creset %C(yellow)%an%d%Creset %s %Cgreen(%cr)%Creset" --date=relative'
 function gcd {
+    # git cd: cd to parant directory that has .git
     if [[ $# > 0 ]]; then
         cd $(dirname $1)
     fi
@@ -83,33 +92,12 @@ function path {
     echo "$p" | head -c -1 | xclip -selection clipboard 2>/dev/null
 }
 
-function f {
-    # f = field
+
+function field {
     awk "{print \$$1}"
 }
 
 
-# make ps more useful
-# ps1: print all processed
-# ps1 <filter>: filtered processed
-# ps1 <filter> 1: show pids
-# ps1 <filter> 2: kill filtered processs
-function ps1 {
-    if [[ $# == 0 ]]; then
-        ps -ef
-    elif [[ $# == 1 ]]; then
-        filter=$1
-        ps -ef | grep -v grep | grep "$filter"
-    else
-        if [[ $2 == "pid" || $2 == "p" ]]; then
-            ps -ef | grep -v grep | grep "$filter" | awk '{print $2}'
-        elif [[ $2 == "kill" || $2 == "k" ]]; then
-            ps -ef | grep -v grep | grep "$filter" | awk '{print $2}' | xargs kill
-        else
-            echo "Unrecognized subcmd: $2"
-        fi
-    fi
-}
 
 function cd {
     if [[ $# -ge 1 && -f $1 ]]; then
@@ -132,14 +120,11 @@ function where {
 
 # ===== for personal computers only
 function nbcd {
-    file_path=$1
-    cd `dirname $file_path`
-    while [[ ! -f build.xml || `pwd` == '/' ]]
-    do
+    if [[ $# > 0 ]]; then
+        cd $(dirname $1)
+    fi
+
+    until [[ -d nbproject || `pwd` == '/' ]]; do
         cd ..
     done
-}
-
-function exe {
-    chmod u+x "$@"
 }
