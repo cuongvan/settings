@@ -21,7 +21,10 @@ alias exe='chmod u+x'
 
 ### ps
 alias psef='ps -ef'
-alias psa='ps aux'
+alias pse=psef
+# alias psa='ps aux'
+alias psg='ps -ef | grep'
+
 
 ### find
 alias fn='find . -name'             # find by name
