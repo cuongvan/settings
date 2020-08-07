@@ -89,7 +89,9 @@ function path {
     then
         p=$(pwd)
     else
-        p=$(python -c "from sys import *; from os.path import *; print abspath(argv[1])" "$1")
+        # p=$(python -c "from sys import *; from os.path import *; print abspath(argv[1])" "$1")
+        wd=$(pwd)
+        p=$(python -c "from sys import *; from os.path import *; print(join(*argv[1:]))" ${wd} "$1")
     fi
     echo "$p"
     echo "$p" | head -c -1 | xclip -selection clipboard 2>/dev/null
