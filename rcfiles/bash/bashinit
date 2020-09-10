@@ -42,3 +42,14 @@ eval "$(dircolors -b)"
 #save history after every command
 #use 'history -r' to reload history
 PROMPT_COMMAND="history -a ; $PROMPT_COMMAND"
+
+# if broken link, then remove
+if [[ -L ~/ram && ! -e ~/ram ]]; then
+  echo "Remove broken link '~/ram' now"
+  rm ~/ram
+fi
+
+if [[ ! -e ~/ram ]]; then
+  echo 'Create and link RAM disk now'
+  mkdir -p /dev/shm/$USER && ln -s /dev/shm/$USER ~/ram
+fi
